@@ -1,0 +1,10 @@
+services:
+  redis:
+    image: redis:latest
+    restart: always
+    ports:
+      - "6379:6379"
+    command: > 
+          --requirepass 123456
+    # volumes:
+    #   - redis_data:/data
