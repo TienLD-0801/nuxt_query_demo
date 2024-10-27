@@ -30,7 +30,6 @@ export default defineNuxtConfig({
       esbuildOptions: {},
     },
   },
-
   runtimeConfig: {
     public: {
       redis: {
@@ -40,7 +39,17 @@ export default defineNuxtConfig({
       },
     },
   },
-
+  nitro: {
+    experimental: {
+      database: true,
+    },
+    database: {
+      dbSqlDemo: {
+        connector: 'sqlite',
+        options: { name: 'db-sql-demo' },
+      },
+    },
+  },
   modules: ['@nuxthub/core'],
   compatibilityDate: '2024-10-27',
 });
