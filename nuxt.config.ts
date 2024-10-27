@@ -39,6 +39,12 @@ export default defineNuxtConfig({
       },
     },
   },
+  components: [
+    {
+      path: '~/components',
+      pathPrefix: false,
+    },
+  ],
   nitro: {
     experimental: {
       database: true,
@@ -47,6 +53,16 @@ export default defineNuxtConfig({
       dbSqlDemo: {
         connector: 'sqlite',
         options: { name: 'db-sql-demo' },
+      },
+    },
+    routeRules: {
+      'api/**': {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+          'Content-Type': 'application/json, text/plain, */*, charset=utf-8',
+        },
       },
     },
   },

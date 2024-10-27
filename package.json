@@ -13,6 +13,9 @@
   "dependencies": {
     "@nuxthub/core": "^0.8.2",
     "@tanstack/vue-query": "^5.35.2",
+    "@types/jsonwebtoken": "^9.0.7",
+    "jsonwebtoken": "^9.0.2",
+    "mqtt": "^5.10.1",
     "nuxt": "^3.13.2",
     "vue": "^3.5.12",
     "vue-router": "^4.3.2"
