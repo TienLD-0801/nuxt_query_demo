@@ -1,15 +1,19 @@
 <template>
-  <div>
-    <h1>Login</h1>
-    <input v-model="email" placeholder="Email" autocomplete="email" />
-    <input
-      v-model="password"
-      type="password"
-      placeholder="Password"
-      autocomplete="current-password"
-    />
-    <button @click="login">Login</button>
-  </div>
+  <ClientOnly fallback-tag="span" fallback="Loading comments...">
+    <template #fallback> Loading... </template>
+    <div>
+      <h1>Login</h1>
+      <input v-model="email" placeholder="Email" autocomplete="email" />
+      <input
+        v-model="password"
+        type="password"
+        placeholder="Password"
+        minlength="8"
+        required
+      />
+      <button @click="login">Login</button>
+    </div>
+  </ClientOnly>
 </template>
 
 <script lang="ts" setup>
@@ -42,4 +46,4 @@ const login = async () => {
 };
 </script>
 
-<style></style>
+<style scoped></style>
