@@ -5,13 +5,12 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
-    "start": "nuxt dev --no-hot",
+    "start": "nuxt start",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@nuxthub/core": "^0.8.2",
     "@tanstack/vue-query": "^5.35.2",
     "@types/jsonwebtoken": "^9.0.7",
     "jsonwebtoken": "^9.0.2",
@@ -23,7 +22,6 @@
   "devDependencies": {
     "@tanstack/eslint-plugin-query": "^5.32.1",
     "add": "^2.0.6",
-    "better-sqlite3": "^11.5.0",
     "sass": "^1.77.0",
     "wrangler": "^3.83.0",
     "yarn": "^1.22.22"
