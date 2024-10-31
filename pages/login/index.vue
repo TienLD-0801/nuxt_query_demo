@@ -18,6 +18,7 @@ import type { UserInfo } from '~/shared/types/user';
 definePageMeta({
   middleware: 'auth-guard',
 });
+
 const { $clientMqtt } = useNuxtApp();
 const email = ref('');
 const password = ref('');

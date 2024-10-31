@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  ssr: false,
+  ssr: true,
 
   hooks: {
     'pages:extend'(pages) {
@@ -19,7 +19,9 @@ export default defineNuxtConfig({
       );
     },
   },
+
   plugins: [],
+
   vite: {
     server: {
       headers: {
@@ -30,6 +32,7 @@ export default defineNuxtConfig({
       esbuildOptions: {},
     },
   },
+
   runtimeConfig: {
     public: {
       redis: {
@@ -39,12 +42,14 @@ export default defineNuxtConfig({
       },
     },
   },
+
   components: [
     {
       path: '~/components',
       pathPrefix: false,
     },
   ],
+
   nitro: {
     output: {
       dir: '.output',
@@ -62,4 +67,6 @@ export default defineNuxtConfig({
       },
     },
   },
+
+  compatibilityDate: '2024-10-31',
 });
