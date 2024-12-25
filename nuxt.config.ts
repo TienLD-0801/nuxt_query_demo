@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   ssr: true,
-
+  modules: ['@nuxtjs/leaflet'],
   hooks: {
     'pages:extend'(pages) {
       pages.push(

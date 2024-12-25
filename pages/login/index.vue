@@ -1,49 +1,22 @@
 <template>
-  <ClientOnly fallback-tag="span" fallback="Loading comments...">
-    <template #fallback> Loading... </template>
-    <div>
-      <h1>Login</h1>
-      <input v-model="email" placeholder="Email" autocomplete="email" />
-      <input
-        v-model="password"
-        type="password"
-        placeholder="Password"
-        minlength="8"
-        required
+  <div style="height: 100vh; width: 100vw">
+    <LMap
+      ref="map"
+      :zoom="zoom"
+      :center="[47.21322, -1.559482]"
+      :use-global-leaflet="false"
+    >
+      <LTileLayer
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        attribution='&amp;copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+        layer-type="base"
+        name="OpenStreetMap"
       />
-      <button @click="login">Login</button>
-    </div>
-  </ClientOnly>
+    </LMap>
+  </div>
 </template>
 
-<script lang="ts" setup>
-import type { UserInfo } from '~/shared/types/user';
-
-definePageMeta({
-  middleware: 'auth-guard',
-});
-
-const { $clientMqtt } = useNuxtApp();
-const email = ref('');
-const password = ref('');
-
-const login = async () => {
-  try {
-    const { data: user, status } = await useFetch<UserInfo>('/api/auth/login', {
-      method: 'POST',
-      body: { email: email.value, password: password.value },
-      responseType: 'json',
-    });
-
-    if (status.value === 'success') {
-      localStorage.setItem('token', JSON.stringify(user.value?.token));
-      $clientMqtt.connect(`${user.value?.email}-${user.value?.id}`);
-      await navigateTo('/');
-    }
-  } catch (error) {
-    console.error(error);
-  }
-};
+<script setup>
+import { ref } from 'vue';
+const zoom = ref(6);
 </script>
-
-<style scoped></style>
